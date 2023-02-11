@@ -9,7 +9,9 @@
         "client-test": "yarn workspace frontend test",
         "server": "yarn workspace backend start",
         "start": "conc --kill-others-on-fail \"yarn client\" \"yarn server\"",
-        "prettier": "npx prettier --write \"**/*.{js,jsx}\""
+        "prettier": "npx prettier --write \"**/*.{js,jsx}\"",
+        "e2e": "yarn workspace frontend e2e",
+        "e2e-headed": "yarn workspace frontend e2e-headed"
     },
     "devDependencies": {
         "concurrently": "^7.6.0",

@@ -19,7 +19,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "e2e": "yarn cypress run"
+    "e2e": "yarn cypress run",
+    "e2e-headed": "yarn cypress run --headed --browser chrome"
   },
   "eslintConfig": {
     "extends": [
