@@ -1,0 +1,16 @@
+{
+    "private": true,
+    "name": "root",
+    "workspaces": [
+        "packages/*"
+      ],
+    "scripts": {
+        "client": "yarn workspace frontend start",
+        "client-test": "yarn workspace frontend test",
+        "server": "yarn workspace backend start",
+        "start": "conc --kill-others-on-fail \"yarn client\" \"yarn server\""
+    },
+    "devDependencies": {
+        "concurrently": "^7.6.0"
+    }
+}
