@@ -9,56 +9,56 @@ import Timer from '../../components/Timer/Timer'
 import Accuracy from '../../components/Accuracy/Accuracy'
 
 const TaskPage = () => {
-  const dispatch = useDispatch()
-  const currentIndex = useSelector((state) => state.task.currentIndex)
-  const task = useSelector((state) => state.task.task)
-  const isCapital = useSelector((state) => state.task.isCapital)
-  const progress = useSelector((state) => state.task.progress)
-  const currentCharCode = useSelector((state) => state.task.currentCharCode)
-  const isTimerStarted = useSelector((state) => state.task.isTimerStarted)
-  const accuracy = useSelector((state) => state.task.accuracy)
+	const dispatch = useDispatch()
+	const currentIndex = useSelector((state) => state.task.currentIndex)
+	const task = useSelector((state) => state.task.task)
+	const isCapital = useSelector((state) => state.task.isCapital)
+	const progress = useSelector((state) => state.task.progress)
+	const currentCharCode = useSelector((state) => state.task.currentCharCode)
+	const isTimerStarted = useSelector((state) => state.task.isTimerStarted)
+	const accuracy = useSelector((state) => state.task.accuracy)
 
-  const secretInputRef = useRef()
+	const secretInputRef = useRef()
 
-  useEffect(() => {
-    secretInputRef.current.focus()
+	useEffect(() => {
+		secretInputRef.current.focus()
 
-    dispatch(taskActions.isCapital())
+		dispatch(taskActions.isCapital())
 
-    if (currentCharCode >= 65 && currentCharCode <= 90) {
-      dispatch(taskActions.isCapital(true))
-    } else {
-      dispatch(taskActions.isCapital(false))
-    }
-  }, [])
+		if (currentCharCode >= 65 && currentCharCode <= 90) {
+			dispatch(taskActions.isCapital(true))
+		} else {
+			dispatch(taskActions.isCapital(false))
+		}
+	}, [])
 
-  const onKeyDownHandler = (e) => {
-    if (e.repeat) return
+	const onKeyDownHandler = (e) => {
+		if (e.repeat) return
 
-    if (e.key === 'Escape') {
-      dispatch(taskActions.reset())
-    } else if (e.key !== 'Shift' && currentIndex < task.length) {
-      dispatch(taskActions.keyPress(e.key.charCodeAt(0)))
-    }
-  }
+		if (e.key === 'Escape') {
+			dispatch(taskActions.reset())
+		} else if (e.key !== 'Shift' && currentIndex < task.length) {
+			dispatch(taskActions.keyPress(e.key.charCodeAt(0)))
+		}
+	}
 
-  return (
-    <div>
-      <Task />
-      <Progressbar progress={progress} />
-      <Keyboard currentCharCode={currentCharCode} isCapital={isCapital} />
+	return (
+		<div>
+			<Task />
+			<Progressbar progress={progress} />
+			<Keyboard currentCharCode={currentCharCode} isCapital={isCapital} />
 
-      <Accuracy accuracy={accuracy} />
-      <Timer isTimerStarted={isTimerStarted} />
+			<Accuracy accuracy={accuracy} />
+			<Timer isTimerStarted={isTimerStarted} />
 
-      <input
-        className='secretinput'
-        type='text'
-        ref={secretInputRef}
-        onKeyDown={onKeyDownHandler}
-      ></input>
-    </div>
-  )
+			<input
+				className='secretinput'
+				type='text'
+				ref={secretInputRef}
+				onKeyDown={onKeyDownHandler}
+			></input>
+		</div>
+	)
 }
 
 export default TaskPage

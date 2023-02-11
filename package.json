@@ -3,14 +3,16 @@
     "name": "root",
     "workspaces": [
         "packages/*"
-      ],
+    ],
     "scripts": {
         "client": "yarn workspace frontend start",
         "client-test": "yarn workspace frontend test",
         "server": "yarn workspace backend start",
-        "start": "conc --kill-others-on-fail \"yarn client\" \"yarn server\""
+        "start": "conc --kill-others-on-fail \"yarn client\" \"yarn server\"",
+        "prettier": "npx prettier --write \"**/*.{js,jsx}\""
     },
     "devDependencies": {
-        "concurrently": "^7.6.0"
+        "concurrently": "^7.6.0",
+        "prettier": "^2.8.4"
     }
 }
