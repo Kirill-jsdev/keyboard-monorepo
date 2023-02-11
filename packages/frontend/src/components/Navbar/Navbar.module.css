@@ -1,0 +1,15 @@
+.navbar {
+    background-color: aqua;
+}
+
+.links {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    margin: 0;
+    padding: 30px;
+}
+
+.links a {
+    text-decoration: none;
+}
